@@ -1,3 +1,3 @@
 # openzepplin-hardhat-solidity-tutorial
 
-Running through OpenZepplin Learn tutorial with Box contract.
+Running through [OpenZepplin Learn tutorial](https://docs.openzeppelin.com/learn/).
