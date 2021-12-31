@@ -1,11 +1,16 @@
 // test/Box.test.js
-// Load dependencies
-const { expect } = require("chai");
+const { expect, use } = require("chai");
+const { solidity } = require("ethereum-waffle");
 
-// Start test block
+use(solidity);
+
 describe("Box", function() {
   before(async function() {
     this.Box = await ethers.getContractFactory("Box");
+
+    const [owner, addr1] = await ethers.getSigners();
+    this.owner = owner;
+    this.otherUser = addr1;
   });
 
   beforeEach(async function() {
@@ -13,13 +18,22 @@ describe("Box", function() {
     await this.box.deployed();
   });
 
-  // Test case
   it("retrieve returns a value previously stored", async function() {
-    // Store a value
     await this.box.store(42);
+    const retrievedValue = (await this.box.retrieve()).toString();
 
-    // Test if the returned value is the same one
-    // Note that we need to use strings to compare the 256 bit integers
-    expect((await this.box.retrieve()).toString()).to.equal("42");
+    expect(retrievedValue).to.equal("42");
+  });
+
+  it("store emits an event", async function() {
+    await expect(this.box.store(1234))
+      .to.emit(this.box, "ValueChanged")
+      .withArgs(1234);
+  });
+
+  it("non-owner cannot store a value", async function() {
+    await expect(
+      this.box.connect(this.otherUser).store(1234)
+    ).to.be.revertedWith("Ownable: caller is not the owner");
   });
 });
