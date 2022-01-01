@@ -1,5 +1,7 @@
 # openzeppelin-solidity-hardhat-playground
 
+![Solidity tests](https://github.com/briangershon/openzeppelin-solidity-hardhat-playground/actions/workflows/continuous-integration.yaml/badge.svg)
+
 Develop, test and deploy Solidity contracts based on OpenZeppelin. Use Hardhat development environment. Deploy to Polygon.
 
 Use as a starter template for new Solidity projects.
