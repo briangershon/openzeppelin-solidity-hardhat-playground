@@ -1,14 +1,18 @@
-# openzepplin-hardhat-solidity-tutorial
+# openzeppelin-solidity-hardhat-playground
 
-Running through [OpenZepplin Learn tutorial](https://docs.openzeppelin.com/learn/).
+Develop, test and deploy Solidity contracts based on OpenZeppelin. Use Hardhat development environment. Deploy to Polygon.
+
+Use as a starter template for new Solidity projects.
+
+Initially based on the [OpenZeppelin Learn tutorial](https://docs.openzeppelin.com/learn/).
 
 Also added:
 
-- solhint
 - additional testing features
-  - extra [Chai matchers from Waffle](https://ethereum-waffle.readthedocs.io/en/latest/matchers.html) (instead of OpenZepplin Test Helpers)
+  - extra [Chai matchers from Waffle](https://ethereum-waffle.readthedocs.io/en/latest/matchers.html) (instead of OpenZeppelin Test Helpers)
   - Github Action to run tests
 - scripts in `package.json`
+- solhint linter
 - configuration to deploy to Polygon Mumbai test network
 
 ## Deploying
