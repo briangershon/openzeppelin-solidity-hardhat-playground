@@ -16,7 +16,7 @@ Added:
     -   extra [Chai matchers from Waffle](https://ethereum-waffle.readthedocs.io/en/latest/matchers.html) (instead of OpenZeppelin Test Helpers)
     -   Github Action to run tests
     -   Run tests (`npm test`)
--   solhint linter
+-   solhint linter config (and then install plugin for your editor that supports solhint syntax highlighting)
 -   format files with Prettier (`npm run style`)
 -   configuration to deploy to Polygon Mumbai test network
 -   turn on Solidity optimization (1000 means optimize for more high-frequency usage of contract). [Compiler Options](https://docs.soliditylang.org/en/v0.7.2/using-the-compiler.html#input-description)
