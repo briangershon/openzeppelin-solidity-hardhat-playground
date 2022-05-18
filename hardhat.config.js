@@ -1,5 +1,6 @@
 require('dotenv').config();
 require('@nomiclabs/hardhat-ethers');
+require('@nomiclabs/hardhat-etherscan');
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
@@ -24,5 +25,8 @@ module.exports = {
             url: POLYGON_MUMBAI_RPC,
             accounts: [PRIVATE_KEY],
         },
+    },
+    etherscan: {
+        apiKey: process.env.ETHERSCAN_API_KEY ?? '',
     },
 };

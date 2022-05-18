@@ -20,6 +20,7 @@ Added:
 -   format files with Prettier (`npm run style`)
 -   configuration to deploy to Polygon Mumbai test network
 -   turn on Solidity optimization (1000 means optimize for more high-frequency usage of contract). [Compiler Options](https://docs.soliditylang.org/en/v0.7.2/using-the-compiler.html#input-description)
+-   add hardhat-etherscan for verifying contracts on PolygonScan (or Etherscan), which means uploading the source code so it's available for contract users to view/verify. For more info see [hardhat-etherscan plugin](https://hardhat.org/plugins/nomiclabs-hardhat-etherscan.html).
 
 ## Deploying
 
@@ -27,18 +28,27 @@ Added:
 
 -   copy `.env.sample` to `.env`
     -   add your Ethereum node RPC URL, for example a url from [Alchemy](https://www.alchemy.com/) or another Ethereum node services.
-    -   add your account private key, for example an account created via MetaMask.
--   ensure your account has some MATIC via <https://faucet.polygon.technology/>
--   test via `npx hardhat console --network mumbai` and run `accounts = await ethers.provider.listAccounts()` and you should see your public account listed there.
+    -   add your wallet account's private key used for deploying, for example an account created via MetaMask.
+    -   to verify contract in a later step, create and add your ETHERSCAN_API_KEY by grabbing your key at <https://polygonscan.com/myapikey>
+-   ensure your wallet account has some MATIC via <https://faucet.polygon.technology/>
 -   deploy via `npx hardhat run --network mumbai scripts/deploy.js`
--   you should see it now in Polygonscan <https://mumbai.polygonscan.com/> when looking up your public account address used to deploy the contract
+-   grab the resulting contract address that you just deployed, let's call that `NEW_CONTRACT_ADDRESS_HERE`
+-   optionally, test manually via console -- see [Playing with Contract](#playing-with-contract) below
+-   upload source code so others can verify it on-chain via `npx hardhat verify --network mumbai NEW_CONTRACT_ADDRESS_HERE`
+-   view contract (and/or call methods directly) in Polygonscan <https://mumbai.polygonscan.com/>, just look up `NEW_CONTRACT_ADDRESS_HERE`
+
+<a id="playing-with-contract"></a>
 
 ### Playing with Contract
 
 Interact with it via the console (`npx hardhat console --network mumbai`)
 
 ```
+await ethers.provider.listAccounts();    // you should see your public wallet account (the match for your private key) listed
+
 const Box = await ethers.getContractFactory('Box');
 const box = await Box.attach('<contract address goes here>');
 await box.store(42);
+// you'll need to wait a bit until value is stored on block-chain before retrieving in next step
+await box.retrieve();   // eventually you'll see `BigNumber { value: "42" }`
 ```
