@@ -8,26 +8,30 @@ Use as a starter template for new Solidity projects.
 
 Initially based on the [OpenZeppelin Learn tutorial](https://docs.openzeppelin.com/learn/).
 
-Also added:
+Tested with Node v16.15 (LTS).
 
-- additional testing features
-  - extra [Chai matchers from Waffle](https://ethereum-waffle.readthedocs.io/en/latest/matchers.html) (instead of OpenZeppelin Test Helpers)
-  - Github Action to run tests
-- scripts in `package.json`
-- solhint linter
-- configuration to deploy to Polygon Mumbai test network
+Added:
+
+-   additional testing features
+    -   extra [Chai matchers from Waffle](https://ethereum-waffle.readthedocs.io/en/latest/matchers.html) (instead of OpenZeppelin Test Helpers)
+    -   Github Action to run tests
+    -   Run tests (`npm test`)
+-   solhint linter config (and then install plugin for your editor that supports solhint syntax highlighting)
+-   format files with Prettier (`npm run style`)
+-   configuration to deploy to Polygon Mumbai test network
+-   turn on Solidity optimization (1000 means optimize for more high-frequency usage of contract). [Compiler Options](https://docs.soliditylang.org/en/v0.7.2/using-the-compiler.html#input-description)
 
 ## Deploying
 
 ### Deploy to Polygon Mumbai Testnet
 
-- copy `.env.sample` to `.env`
-  - add your Ethereum node RPC URL, for example a url from [Alchemy](https://www.alchemy.com/) or another Ethereum node services.
-  - add your account private key, for example an account created via MetaMask.
-- ensure your account has some MATIC via <https://faucet.polygon.technology/>
-- test via `npx hardhat console --network mumbai` and run `accounts = await ethers.provider.listAccounts()` and you should see your public account listed there.
-- deploy via `npx hardhat run --network mumbai scripts/deploy.js`
-- you should see it now in Polygonscan <https://mumbai.polygonscan.com/> when looking up your public account address used to deploy the contract
+-   copy `.env.sample` to `.env`
+    -   add your Ethereum node RPC URL, for example a url from [Alchemy](https://www.alchemy.com/) or another Ethereum node services.
+    -   add your account private key, for example an account created via MetaMask.
+-   ensure your account has some MATIC via <https://faucet.polygon.technology/>
+-   test via `npx hardhat console --network mumbai` and run `accounts = await ethers.provider.listAccounts()` and you should see your public account listed there.
+-   deploy via `npx hardhat run --network mumbai scripts/deploy.js`
+-   you should see it now in Polygonscan <https://mumbai.polygonscan.com/> when looking up your public account address used to deploy the contract
 
 ### Playing with Contract
 
