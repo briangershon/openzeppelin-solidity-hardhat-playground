@@ -37,6 +37,10 @@ Added:
 -   upload source code so others can verify it on-chain via `npx hardhat verify --network mumbai NEW_CONTRACT_ADDRESS_HERE`
 -   view contract (and/or call methods directly) in Polygonscan <https://mumbai.polygonscan.com/>, just look up `NEW_CONTRACT_ADDRESS_HERE`
 
+### Deploy to Polygon Mainnet
+
+Use same instructions above for Polygon `Mumbai` testnet but use `--network mainnet` command option instead.
+
 <a id="playing-with-contract"></a>
 
 ### Playing with Contract
@@ -52,3 +56,8 @@ await box.store(42);
 // you'll need to wait a bit until value is stored on the blockchain before retrieving in next step
 await box.retrieve();   // you'll ultimately see `BigNumber { value: "42" }`
 ```
+
+### Example deploys
+
+-   On Mumbai testnet: https://mumbai.polygonscan.com/address/0x46d67851d088fa20Bfde7f9516ec22e35D9C7504
+-   On Polygon Mainnet: https://polygonscan.com/address/0xD4465A11EAD02D81Bb9BeCfD720f1bDAe36B39F6
