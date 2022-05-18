@@ -8,7 +8,9 @@ Use as a starter template for new Solidity projects.
 
 Initially based on the [OpenZeppelin Learn tutorial](https://docs.openzeppelin.com/learn/).
 
-Also added:
+Tested with Node v16.15 (LTS).
+
+Added:
 
 - additional testing features
   - extra [Chai matchers from Waffle](https://ethereum-waffle.readthedocs.io/en/latest/matchers.html) (instead of OpenZeppelin Test Helpers)
