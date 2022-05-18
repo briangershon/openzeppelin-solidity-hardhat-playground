@@ -13,9 +13,9 @@ Tested with Node v16.15 (LTS).
 Added:
 
 -   additional testing features
-    -   extra [Chai matchers from Waffle](https://ethereum-waffle.readthedocs.io/en/latest/matchers.html) (instead of OpenZeppelin Test Helpers)
-    -   Github Action to run tests
-    -   Run tests (`npm test`)
+    -   run tests locally (via `npm test`)
+    -   use [Chai matchers from Waffle](https://ethereum-waffle.readthedocs.io/en/latest/matchers.html) (instead of OpenZeppelin Test Helpers)
+    -   includes Github Action to run tests
 -   solhint linter config (and then install plugin for your editor that supports solhint syntax highlighting)
 -   format files with Prettier (`npm run style`)
 -   configuration to deploy to Polygon Mumbai test network
@@ -49,6 +49,6 @@ await ethers.provider.listAccounts();    // you should see your public wallet ac
 const Box = await ethers.getContractFactory('Box');
 const box = await Box.attach('<contract address goes here>');
 await box.store(42);
-// you'll need to wait a bit until value is stored on block-chain before retrieving in next step
-await box.retrieve();   // eventually you'll see `BigNumber { value: "42" }`
+// you'll need to wait a bit until value is stored on the blockchain before retrieving in next step
+await box.retrieve();   // you'll ultimately see `BigNumber { value: "42" }`
 ```
