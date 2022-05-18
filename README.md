@@ -16,6 +16,7 @@ Also added:
 - scripts in `package.json`
 - solhint linter
 - configuration to deploy to Polygon Mumbai test network
+- turn on Solidity optimization (1000 means optimize for more high-frequency usage of contract). [Compiler Options](https://docs.soliditylang.org/en/v0.7.2/using-the-compiler.html#input-description)
 
 ## Deploying
 
